@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedidos</h2>
+<p><a href="{% url 'pedido_add' %}">Adicionar pedido</a></p>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Cliente</th><th>Descrição</th><th>Valor</th><th>Data</th><th>Status</th><th>Ações</th></tr>
+  </thead>
+  <tbody>
+  {% for obj in object_list %}
+    <tr>
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.cliente.nome }}</td>
+      <td>{{ obj.descricao }}</td>
+      <td>{{ obj.valor }}</td>
+      <td>{{ obj.data }}</td>
+      <td>{{ obj.get_status_display }}</td>
+      <td>
+        <a href="{% url 'pedido_detail' obj.pk %}">Ver</a> |
+        <a href="{% url 'pedido_edit' obj.pk %}">Editar</a> |
+        <a href="{% url 'pedido_delete' obj.pk %}">Excluir</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="7">Nenhum pedido registrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

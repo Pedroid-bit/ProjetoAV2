@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedido #{{ object.id }}</h2>
+<p><strong>Cliente:</strong> {{ object.cliente.nome }}</p>
+<p><strong>Descrição:</strong> {{ object.descricao }}</p>
+<p><strong>Valor:</strong> {{ object.valor }}</p>
+<p><strong>Data:</strong> {{ object.data }}</p>
+<p><strong>Status:</strong> {{ object.get_status_display }}</p>
+
+<p>
+  <a href="{% url 'pedido_edit' object.pk %}">Editar</a> |
+  <a href="{% url 'pedido_delete' object.pk %}">Excluir</a> |
+  <a href="{% url 'pedido_list' %}">Voltar à lista</a>
+</p>
+{% endblock %}

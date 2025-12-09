@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Cliente: {{ object.nome }}</h2>
+<p><strong>Email:</strong> {{ object.email }}</p>
+<p><strong>Telefone:</strong> {{ object.telefone }}</p>
+
+<h3>Pedidos</h3>
+<p><a href="{% url 'pedido_add' %}">Adicionar pedido</a></p>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Descrição</th><th>Valor</th><th>Data</th><th>Status</th><th>Ações</th></tr>
+  </thead>
+  <tbody>
+    {% for pedido in object.pedidos.all %}
+      <tr>
+        <td>{{ pedido.id }}</td>
+        <td>{{ pedido.descricao }}</td>
+        <td>{{ pedido.valor }}</td>
+        <td>{{ pedido.data }}</td>
+        <td>{{ pedido.get_status_display }}</td>
+        <td>
+          <a href="{% url 'pedido_detail' pedido.pk %}">Ver</a> |
+          <a href="{% url 'pedido_edit' pedido.pk %}">Editar</a> |
+          <a href="{% url 'pedido_delete' pedido.pk %}">Excluir</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6">Nenhum pedido.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p><a href="{% url 'cliente_list' %}">Voltar à lista de clientes</a></p>
+{% endblock %}

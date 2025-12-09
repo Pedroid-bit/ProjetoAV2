@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projeto AV2</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      nav a { margin-right: 10px; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ccc; padding: 8px; }
+      th { background: #f2f2f2; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Projeto AV2 - Gestão</h1>
+      <nav>
+        <a href="/">Clientes</a>
+        <a href="/pedidos/">Pedidos</a>
+        <a href="/admin/">Admin</a>
+      </nav>
+      <hr>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Confirmar exclusão de pedido</h2>
+<p>Tem certeza que deseja excluir o pedido #{{ object.id }}?</p>
+<form method="post">{% csrf_token %}
+  <button type="submit">Sim, excluir</button>
+  <a href="{% url 'pedido_list' %}">Cancelar</a>
+</form>
+{% endblock %}
